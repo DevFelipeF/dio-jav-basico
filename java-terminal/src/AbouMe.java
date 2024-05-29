@@ -1,11 +1,12 @@
 
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
 
 public class AbouMe {
-    @SuppressWarnings("resource")
     public static void main(String[] args) {
+        try{
 
         Scanner scanner = new Scanner(System.in).useLocale(Locale.US);
 
@@ -22,10 +23,12 @@ public class AbouMe {
         double altura = scanner.nextDouble();
 
         System.out.print("Olá, me chamo " + nome + " " + sobrenome + ", ");
-
-        System.out.print("tenho " + idade + " anos ");
-        
+        System.out.print("tenho " + idade + " anos ");       
         System.err.println("minha altura é " + altura + "cm");
-
+        scanner.close();
+        }
+        catch (InputMismatchException e){
+        System.err.println("Os campos idade e altura precisam ser numericos");
+        }
     }
 }
